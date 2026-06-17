@@ -1,108 +1,849 @@
+/* =================================================
+   RESET E CONFIGURAÇÕES GERAIS
+================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0f1a;
-  color: #e6e6e6;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(0,255,255,0.25),
+    transparent 35%),
+
+    radial-gradient(circle at top right,
+    rgba(180,0,255,0.25),
+    transparent 35%),
+
+    linear-gradient(135deg,#020617,#09001d,#000);
+
+    color:white;
+
+    overflow-x:hidden;
 }
 
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: auto;
+
+
+/* =================================================
+   ELEMENTOS DIGITAIS FLUTUANTES
+================================================= */
+
+
+.bg-orbs span {
+
+    position:fixed;
+
+    width:15px;
+    height:15px;
+
+    background:#00f7ff;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 20px #00f7ff,
+    0 0 40px #7d00ff;
+
+    animation: float 8s infinite ease-in-out;
+
+    z-index:-1;
+
 }
 
-.header {
-  background: linear-gradient(90deg, #1b2a4a, #0b0f1a);
-  padding: 40px 0;
-  border-bottom: 2px solid #2b5cff;
+
+.bg-orbs span:nth-child(1){
+
+    top:15%;
+    left:8%;
+
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 32px;
-  color: #ffffff;
+
+.bg-orbs span:nth-child(2){
+
+    top:40%;
+    right:10%;
+
+    animation-delay:2s;
 }
 
-.header p {
-  color: #aab4d6;
+
+.bg-orbs span:nth-child(3){
+
+    bottom:15%;
+    left:20%;
+
+    animation-delay:4s;
+
 }
+
+
+.bg-orbs span:nth-child(4){
+
+    bottom:25%;
+    right:25%;
+
+    animation-delay:6s;
+
+}
+
+
+
+@keyframes float {
+
+    0%,100%{
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+
+    50%{
+
+        transform:
+        translateY(-40px)
+        scale(1.4);
+
+    }
+
+}
+
+
+
+
+/* =================================================
+   MENU
+================================================= */
+
+
+header {
+
+    position:fixed;
+
+    width:100%;
+
+    top:0;
+
+    z-index:999;
+
+    background:
+    rgba(5,5,25,0.75);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.15);
+
+}
+
+
 
 nav {
-  margin-top: 15px;
+
+    padding:18px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
 }
 
-nav a {
-  margin-right: 15px;
-  color: #7aa2ff;
-  text-decoration: none;
+
+
+.logo {
+
+    font-size:1.4rem;
+
+    font-weight:bold;
+
+    color:#8fffff;
+
+    text-shadow:
+    0 0 15px cyan;
+
 }
 
-nav a:hover {
-  color: white;
+
+
+.menu {
+
+    display:flex;
+
+    gap:25px;
+
+    list-style:none;
+
 }
 
-.card {
-  background: #121a2b;
-  padding: 25px;
-  margin: 20px 0;
-  border-radius: 10px;
-  border: 1px solid #22304d;
+
+
+.menu a {
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
 }
+
+
+
+.menu a:hover {
+
+    color:#00eaff;
+
+}
+
+
+
+.hamburger {
+
+    display:none;
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+/* =================================================
+   HERO
+================================================= */
+
+
+section {
+
+    padding:90px 8%;
+
+}
+
+
+
+.hero {
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+
+
+.hero-content {
+
+    max-width:950px;
+
+}
+
+
+
+.badge {
+
+    display:inline-block;
+
+    padding:12px 25px;
+
+    margin-bottom:25px;
+
+    border-radius:40px;
+
+    background:
+    rgba(255,255,255,.1);
+
+    border:
+    1px solid rgba(255,255,255,.25);
+
+    color:#8fffff;
+
+}
+
+
+
+h1 {
+
+    font-size:
+    clamp(2.8rem,7vw,6rem);
+
+    text-transform:uppercase;
+
+    background:
+    linear-gradient(
+    90deg,
+    white,
+    cyan,
+    #b066ff
+    );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+
+
+h2 {
+
+    font-size:
+    clamp(2rem,4vw,3rem);
+
+    margin-bottom:25px;
+
+
+    background:
+    linear-gradient(
+    90deg,
+    white,
+    cyan,
+    violet
+    );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+
+
+p {
+
+    color:#dbe6ff;
+
+    line-height:1.7;
+
+    font-size:1.05rem;
+
+}
+
+
+
+
+/* =================================================
+   BOTÕES
+================================================= */
+
+
+.btn {
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:15px 32px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    cyan,
+    #8b3dff
+    );
+
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+
+    box-shadow:
+    0 0 25px cyan;
+
+
+    transition:.3s;
+
+}
+
+
+
+.btn:hover {
+
+    transform:
+    translateY(-5px)
+    scale(1.05);
+
+
+    box-shadow:
+    0 0 45px violet;
+
+}
+
+
+
+
+
+/* =================================================
+   CARDS GLASSMORPHISM
+================================================= */
+
 
 .grid {
-  display: flex;
-  gap: 20px;
-  align-items: center;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+    margin-top:35px;
+
 }
 
-.grid img {
-  width: 50%;
-  border-radius: 10px;
+
+
+
+.card {
+
+    padding:30px;
+
+
+    border-radius:25px;
+
+
+    background:
+    rgba(255,255,255,.08);
+
+
+    backdrop-filter:
+    blur(18px);
+
+
+    border:
+    1px solid rgba(255,255,255,.18);
+
+
+    box-shadow:
+    inset 0 0 20px rgba(255,255,255,.05),
+    0 0 30px rgba(0,255,255,.12);
+
+
+    transition:.4s;
+
 }
 
-.quiz button {
-  margin: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
+
+
+
+.card:hover {
+
+    transform:
+    translateY(-10px);
+
+
+    border-color:cyan;
+
 }
 
-.barra {
-  margin: 10px 0;
+
+
+.card h3 {
+
+    color:#8fffff;
+
+    margin-bottom:15px;
+
 }
 
-.progress {
-  background: #1c2740;
-  height: 12px;
-  border-radius: 10px;
-  overflow: hidden;
+
+
+
+/* =================================================
+   CHECKLIST
+================================================= */
+
+
+.check-item {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+
+    padding:18px;
+
+
+    margin:15px 0;
+
+
+    border-radius:18px;
+
+
+    cursor:pointer;
+
+
+    background:
+    rgba(255,255,255,.08);
+
+
+    border:
+    1px solid rgba(255,255,255,.15);
+
 }
 
-.fill {
-  height: 100%;
-  width: 0;
-  background: #3b82f6;
+
+
+.check-box {
+
+    width:28px;
+
+    height:28px;
+
+
+    border-radius:8px;
+
+
+    border:2px solid cyan;
+
 }
 
-.contador {
-  margin-top: 20px;
-  font-size: 20px;
-  color: #7aa2ff;
+
+
+.check-item.active .check-box {
+
+    background:
+    linear-gradient(
+    135deg,
+    cyan,
+    violet
+    );
+
+
+    box-shadow:
+    0 0 20px cyan;
+
 }
 
-.footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
-  border-top: 1px solid #222;
+
+
+
+
+/* =================================================
+   QUIZ
+================================================= */
+
+
+.quiz-box {
+
+    max-width:800px;
+
+    margin:auto;
+
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-  .grid {
-    flex-direction: column;
-  }
 
-  .grid img {
-    width: 100%;
-  }
+
+.question {
+
+    font-size:1.4rem;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.option {
+
+
+    width:100%;
+
+
+    padding:15px;
+
+
+    margin:10px 0;
+
+
+    border-radius:15px;
+
+
+    border:
+    1px solid rgba(255,255,255,.2);
+
+
+    background:
+    rgba(255,255,255,.08);
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    text-align:left;
+
+}
+
+
+
+.option:hover {
+
+    background:
+    rgba(0,255,255,.2);
+
+}
+
+
+
+.correct {
+
+    background:
+    rgba(0,255,150,.35)!important;
+
+}
+
+
+
+.wrong {
+
+    background:
+    rgba(255,0,100,.35)!important;
+
+}
+
+
+
+#score {
+
+    margin-top:25px;
+
+    color:#8fffff;
+
+    font-size:1.4rem;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+/* =================================================
+   MITOS
+================================================= */
+
+
+.myth {
+
+    cursor:pointer;
+
+}
+
+
+
+.myth p {
+
+    display:none;
+
+}
+
+
+
+.myth.open p {
+
+    display:block;
+
+}
+
+
+
+
+
+
+/* =================================================
+   ANIMAÇÃO AO ROLAR
+================================================= */
+
+
+.reveal {
+
+    opacity:0;
+
+    transform:
+    translateY(50px);
+
+
+    transition:.8s;
+
+}
+
+
+
+.reveal.active {
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+}
+
+
+
+
+
+/* =================================================
+   RODAPÉ
+================================================= */
+
+
+footer {
+
+    padding:35px;
+
+    text-align:center;
+
+    background:
+    rgba(0,0,0,.5);
+
+
+    color:#8fffff;
+
+}
+
+
+
+
+
+#topBtn {
+
+    position:fixed;
+
+
+    bottom:25px;
+
+    right:25px;
+
+
+    width:50px;
+
+    height:50px;
+
+
+    border:none;
+
+
+    border-radius:50%;
+
+
+    background:
+    linear-gradient(
+    135deg,
+    cyan,
+    purple
+    );
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    display:none;
+
+
+    box-shadow:
+    0 0 25px cyan;
+
+}
+
+
+
+
+/* =================================================
+   RESPONSIVIDADE
+================================================= */
+
+
+@media(max-width:850px){
+
+
+.menu {
+
+    position:absolute;
+
+    top:70px;
+
+    right:8%;
+
+
+    flex-direction:column;
+
+
+    padding:25px;
+
+
+    display:none;
+
+
+    border-radius:20px;
+
+
+    background:
+    rgba(0,0,20,.95);
+
+}
+
+
+.menu.active{
+
+    display:flex;
+
+}
+
+
+
+.hamburger {
+
+    display:block;
+
+}
+
+
+
+section {
+
+    padding:75px 6%;
+
+}
+
+
+
 }
