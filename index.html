@@ -1,573 +1,249 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-    <!-- ================= CONFIGURAÇÕES ================= -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Cidadania Digital e Inteligência Artificial</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cidadania Digital 2026 | IA, Deepfakes e Desinformação</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
-
 <body>
 
+  <div class="noise"></div>
+  <canvas id="particles"></canvas>
 
-<!-- ================= ELEMENTOS FLUTUANTES ================= -->
-
-<div class="bg-orbs">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-
-
-
-<!-- ================= MENU ================= -->
-
-<header>
-
+  <header class="navbar">
+    <div class="logo">DIGI<span>Y2K</span></div>
     <nav>
-
-        <div class="logo">
-            DIGITAL•IA
-        </div>
-
-
-        <div class="hamburger" id="hamburger">
-            ☰
-        </div>
-
-
-        <ul class="menu" id="menu">
-
-            <li><a href="#deepfakes">Deepfakes</a></li>
-
-            <li><a href="#desinformacao">IA e Fake News</a></li>
-
-            <li><a href="#identificar">Identificar</a></li>
-
-            <li><a href="#quiz">Quiz</a></li>
-
-            <li><a href="#seguranca">Segurança</a></li>
-
-        </ul>
-
+      <a href="#inicio">INÍCIO</a>
+      <a href="#deepfakes">DEEPFAKES</a>
+      <a href="#dados">DADOS</a>
+      <a href="#seguranca">SEGURANÇA</a>
+      <a href="#quiz">QUIZ</a>
     </nav>
-
-</header>
-
-
-
-
-<!-- ================= TELA INICIAL ================= -->
-
-<section class="hero">
-
-
-<div class="hero-content reveal">
-
-
-<span class="badge">
-Cidadania Digital + Inteligência Artificial
-</span>
-
-
-<h1>
-Nem tudo que parece real é verdadeiro
-</h1>
-
-
-<p>
-Deepfakes, fake news automatizadas e conteúdos manipulados por inteligência artificial
-podem enganar milhões de pessoas.
-
-Aprenda a analisar conteúdos digitais e usar a tecnologia com responsabilidade.
-</p>
-
-
-<a href="#deepfakes" class="btn">
-Iniciar experiência digital
-</a>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<!-- ================= DEEPFAKES ================= -->
-
-<section id="deepfakes" class="reveal">
-
-
-<h2>
-O que são Deepfakes?
-</h2>
-
-
-<p>
-Deepfakes são imagens, vídeos ou áudios modificados com inteligência artificial.
-Eles podem fazer parecer que alguém disse ou fez algo que nunca aconteceu.
-</p>
-
-
-
-<div class="grid">
-
-
-<div class="card">
-
-<h3>Manipulação de imagem</h3>
-
-<p>
-A tecnologia consegue alterar rostos e expressões criando conteúdos muito realistas.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>Voz artificial</h3>
-
-<p>
-Ferramentas de IA conseguem reproduzir vozes humanas e criar falas falsas.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>Alteração de contexto</h3>
-
-<p>
-Até conteúdos verdadeiros podem ser editados para transmitir uma mensagem diferente.
-</p>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ================= IA E DESINFORMAÇÃO ================= -->
-
-
-<section id="desinformacao" class="reveal">
-
-
-<h2>
-Como a IA pode espalhar desinformação
-</h2>
-
-
-<div class="grid">
-
-
-<div class="card">
-
-<h3>Fake news automatizadas</h3>
-
-<p>
-Sistemas inteligentes podem gerar textos falsos rapidamente e espalhar informações incorretas.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>Imagens falsas</h3>
-
-<p>
-Imagens criadas artificialmente podem representar fatos ou pessoas que nunca existiram.
-</p>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>Velocidade digital</h3>
-
-<p>
-Uma informação falsa pode circular antes mesmo que seja verificada.
-</p>
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ================= IDENTIFICAÇÃO ================= -->
-
-
-<section id="identificar" class="reveal">
-
-
-<h2>
-Como identificar uma mídia manipulada
-</h2>
-
-
-<div class="grid">
-
-
-<div class="card">
-<h3>Expressões estranhas</h3>
-<p>Observe movimentos faciais artificiais ou fora de sincronia.</p>
-</div>
-
-
-
-<div class="card">
-<h3>Voz robótica</h3>
-<p>Atenção para falas sem emoção ou com cortes estranhos.</p>
-</div>
-
-
-
-<div class="card">
-<h3>Luz diferente</h3>
-<p>Sombras e reflexos podem denunciar alterações.</p>
-</div>
-
-
-
-<div class="card">
-<h3>Fonte desconhecida</h3>
-<p>Verifique quem publicou originalmente.</p>
-</div>
-
-
-
-<div class="card">
-<h3>Manchetes exageradas</h3>
-<p>Cuidado com conteúdos feitos apenas para gerar reação.</p>
-</div>
-
-
-
-<div class="card">
-<h3>Confirmação</h3>
-<p>Pesquise em fontes confiáveis antes de compartilhar.</p>
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= CHECKLIST ================= -->
-
-<section class="reveal">
-
-
-<h2>
-Antes de compartilhar, verifique
-</h2>
-
-
-<p>
-Clique nos itens para confirmar sua análise:
-</p>
-
-
-
-<div class="check-item">
-<div class="check-box"></div>
-Verifiquei a fonte original
-</div>
-
-
-<div class="check-item">
-<div class="check-box"></div>
-Pesquisei em outros sites confiáveis
-</div>
-
-
-<div class="check-item">
-<div class="check-box"></div>
-Observei sinais de edição ou IA
-</div>
-
-
-<div class="check-item">
-<div class="check-box"></div>
-Pensei antes de compartilhar
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ================= QUIZ ================= -->
-
-<section id="quiz" class="reveal">
-
-
-<h2>
-Quiz da Verdade Digital
-</h2>
-
-
-<div class="card quiz-box">
-
-
-<div id="question" class="question"></div>
-
-
-<div id="answers"></div>
-
-
-<button class="btn" id="nextBtn">
-Próxima pergunta
-</button>
-
-
-<div id="score"></div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ================= SEGURANÇA ================= -->
-
-<section id="seguranca" class="reveal">
-
-
-<h2>
-Boas práticas de segurança digital
-</h2>
-
-
-
-<div class="grid">
-
-
-<div class="card">
-<h3>Pense antes do clique</h3>
-<p>Nem tudo que viraliza é verdadeiro.</p>
-</div>
-
-
-<div class="card">
-<h3>Proteja seus dados</h3>
-<p>Tenha cuidado com informações pessoais na internet.</p>
-</div>
-
-
-
-<div class="card">
-<h3>Questione conteúdos</h3>
-<p>A dúvida é uma ferramenta importante contra fake news.</p>
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ================= ESCOLA ================= -->
-
-<section class="reveal">
-
-
-<h2>
-Cidadania digital na escola
-</h2>
-
-
-<p>
-A escola tem papel essencial na formação de cidadãos preparados para lidar
-com inteligência artificial, informação e tecnologia de maneira ética.
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ================= MITOS ================= -->
-
-
-<section class="reveal">
-
-
-<h2>
-Mitos e Verdades
-</h2>
-
-
-<div class="grid">
-
-
-<div class="card myth">
-
-<h3>
-Mito: Todo vídeo é uma prova
-</h3>
-
-<p>
-Vídeos também podem ser manipulados digitalmente.
-</p>
-
-
-</div>
-
-
-
-<div class="card myth">
-
-<h3>
-Verdade: verificar evita problemas
-</h3>
-
-<p>
-Pesquisar antes de compartilhar ajuda toda a sociedade.
-</p>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ================= FINAL ================= -->
-
-
-<section class="reveal">
-
-
-<h2>
-Tecnologia com consciência
-</h2>
-
-
-<p>
-A inteligência artificial é uma grande ferramenta quando utilizada com responsabilidade.
-O futuro digital depende das escolhas feitas hoje.
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ================= RODAPÉ ================= -->
-
-
-<footer>
-
-Projeto Cidadania Digital • #cidadaniadigital2026
-
-</footer>
-
-
-
-
-<!-- BOTÃO TOPO -->
-
-<button id="topBtn">
-↑
-</button>
-
-
-
-<!-- JAVASCRIPT -->
-
-<script src="script.js"></script>
-
-
-
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <div class="retro-window floating">
+      <div class="window-bar">
+        <span></span><span></span><span></span>
+        <p>AI_SCAN.exe</p>
+      </div>
+      <div class="window-body">
+        <p>STATUS: realidade em análise...</p>
+        <div class="mini-loader"></div>
+      </div>
+    </div>
+
+    <div class="hero-content reveal">
+      <p class="tag">#cidadaniadigital2026</p>
+      <h1 class="glitch" data-text="IA, DEEPFAKES & A NOVA ERA DIGITAL">
+        IA, DEEPFAKES & A NOVA ERA DIGITAL
+      </h1>
+      <p class="subtitle">Você consegue descobrir o que é real?</p>
+      <a href="#deepfakes" class="neon-btn">COMEÇAR EXPLORAÇÃO</a>
+    </div>
+
+    <div class="stickers">
+      <span>🤖</span>
+      <span>👁️</span>
+      <span>💿</span>
+      <span>🌀</span>
+      <span>⚡</span>
+    </div>
+  </section>
+
+  <section id="deepfakes" class="section">
+    <div class="section-title reveal">
+      <p>CAPÍTULO 01</p>
+      <h2>O QUE SÃO <span>DEEPFAKES?</span></h2>
+    </div>
+
+    <div class="grid two">
+      <div class="glass-card reveal">
+        <h3>Rosto, voz e realidade remixados</h3>
+        <p>
+          Deepfakes são mídias manipuladas por inteligência artificial para criar
+          vídeos, imagens ou áudios falsos com aparência realista. A tecnologia pode
+          copiar expressões faciais, movimentos, voz e até estilo de fala.
+        </p>
+        <p>
+          O problema não é a IA em si, mas o uso irresponsável: golpes, humilhação,
+          manipulação política, falsas acusações e desinformação em massa.
+        </p>
+      </div>
+
+      <div class="compare-card reveal">
+        <div class="scan-face">
+          <div class="face"></div>
+          <div class="scan-line"></div>
+        </div>
+        <h3>REAL ou IA?</h3>
+        <p>Nem tudo que parece verdadeiro foi gravado de verdade.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-panel">
+    <div class="section-title reveal">
+      <p>CAPÍTULO 02</p>
+      <h2>COMO IDENTIFICAR UMA <span>DEEPFAKE?</span></h2>
+    </div>
+
+    <div class="check-grid">
+      <div class="check-card reveal">🔍 <h3>Movimentos estranhos</h3><p>Observe boca, piscadas, gestos e sincronia do rosto.</p></div>
+      <div class="check-card reveal">👁️ <h3>Olhos e expressões</h3><p>Olhos sem foco, expressões travadas ou pele artificial são sinais.</p></div>
+      <div class="check-card reveal">🎧 <h3>Áudio artificial</h3><p>Voz metálica, pausas esquisitas e emoção falsa merecem atenção.</p></div>
+      <div class="check-card reveal">💡 <h3>Fonte original</h3><p>Procure a origem do vídeo antes de acreditar ou compartilhar.</p></div>
+      <div class="check-card reveal">🌐 <h3>Compare informações</h3><p>Veja se outros canais confiáveis também confirmam o conteúdo.</p></div>
+    </div>
+  </section>
+
+  <section id="dados" class="section dashboard">
+    <div class="section-title reveal">
+      <p>CAPÍTULO 03</p>
+      <h2>DADOS, ALERTAS E <span>DASHBOARD DIGITAL</span></h2>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <h3><span class="counter" data-target="90">0</span>%</h3>
+        <p>Estimativa frequentemente debatida sobre o crescimento de conteúdo sintético online.</p>
+      </div>
+      <div class="stat-card reveal">
+        <h3><span class="counter" data-target="10">0</span>x</h3>
+        <p>Uma notícia falsa pode se espalhar muito mais rápido quando recebe impulsionamento automatizado.</p>
+      </div>
+      <div class="stat-card reveal">
+        <h3><span class="counter" data-target="24">0</span>h</h3>
+        <p>É tempo suficiente para um conteúdo manipulado viralizar antes de ser desmentido.</p>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="chart-card reveal">
+        <h3>Risco de Desinformação</h3>
+        <div class="bar"><span style="--w:85%"></span></div>
+        <div class="bar"><span style="--w:70%"></span></div>
+        <div class="bar"><span style="--w:55%"></span></div>
+      </div>
+
+      <div class="chart-card reveal">
+        <h3>Conteúdo suspeito</h3>
+        <canvas id="circleChart" width="220" height="220"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title reveal">
+      <p>CAPÍTULO 04</p>
+      <h2>FAKE NEWS <span>AUTOMATIZADAS</span></h2>
+    </div>
+
+    <div class="news-spread reveal">
+      <div class="fake-news">
+        <div class="window-bar"><span></span><span></span><span></span><p>noticia_viral.html</p></div>
+        <h3>“Urgente! Informação não verificada!”</h3>
+        <p>Bots compartilham, algoritmos ampliam e pessoas repassam sem checar.</p>
+      </div>
+      <div class="nodes">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section split-section">
+    <div class="section-title reveal">
+      <p>CAPÍTULO 05</p>
+      <h2>IA: <span>VILÃ OU ALIADA?</span></h2>
+    </div>
+
+    <div class="split">
+      <div class="positive reveal">
+        <h3>IA COMO ALIADA</h3>
+        <p>✔ Medicina</p>
+        <p>✔ Educação</p>
+        <p>✔ Acessibilidade</p>
+        <p>✔ Tecnologia</p>
+      </div>
+
+      <div class="danger reveal">
+        <h3>IA SEM ÉTICA</h3>
+        <p>⚠ Golpes digitais</p>
+        <p>⚠ Perfis falsos</p>
+        <p>⚠ Manipulação social</p>
+        <p>⚠ Deepfakes criminosas</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="seguranca" class="section">
+    <div class="section-title reveal">
+      <p>CAPÍTULO 06</p>
+      <h2>GUIA DE <span>PROTEÇÃO DIGITAL</span></h2>
+    </div>
+
+    <div class="check-grid">
+      <div class="check-card reveal">🔐 <h3>Senhas fortes</h3><p>Use senhas únicas e autenticação em duas etapas.</p></div>
+      <div class="check-card reveal">🔎 <h3>Verifique fontes</h3><p>Desconfie de prints, cortes e manchetes sem contexto.</p></div>
+      <div class="check-card reveal">🤖 <h3>Use IA com consciência</h3><p>IA é ferramenta, não substituta do pensamento crítico.</p></div>
+      <div class="check-card reveal">🧠 <h3>Pense antes de compartilhar</h3><p>Compartilhar sem checar também espalha desinformação.</p></div>
+      <div class="check-card reveal">📱 <h3>Proteja sua identidade</h3><p>Evite expor documentos, localização e dados pessoais.</p></div>
+    </div>
+  </section>
+
+  <section class="section scanner-section">
+    <div class="section-title reveal">
+      <p>EXPERIMENTO INTERATIVO</p>
+      <h2>SCANNER DE <span>FAKE NEWS</span></h2>
+    </div>
+
+    <div class="scanner reveal">
+      <p id="scannerText">Insira uma notícia suspeita no campo abaixo.</p>
+      <textarea id="fakeInput" placeholder="Cole aqui uma manchete ou mensagem suspeita..."></textarea>
+      <button id="scanBtn" class="neon-btn">ANALISAR CONTEÚDO</button>
+      <div class="scan-progress"><span id="scanProgress"></span></div>
+      <p id="scanResult"></p>
+    </div>
+  </section>
+
+  <section class="section timeline-section">
+    <div class="section-title reveal">
+      <p>CAPÍTULO 07</p>
+      <h2>LINHA DO TEMPO DA <span>IA</span></h2>
+    </div>
+
+    <div class="timeline">
+      <div class="time-item reveal"><strong>1950</strong><p>Primeiras ideias modernas sobre máquinas inteligentes.</p></div>
+      <div class="time-item reveal"><strong>2010</strong><p>Avanço do aprendizado profundo e reconhecimento de padrões.</p></div>
+      <div class="time-item reveal"><strong>2020</strong><p>Popularização da IA generativa em textos, imagens e vídeos.</p></div>
+      <div class="time-item reveal"><strong>2026</strong><p>Desafio escolar e social: identificar, checar e usar IA com ética.</p></div>
+    </div>
+  </section>
+
+  <section id="quiz" class="section quiz-section">
+    <div class="section-title reveal">
+      <p>DESAFIO FINAL</p>
+      <h2>VOCÊ SOBREVIVE NA <span>ERA DA IA?</span></h2>
+    </div>
+
+    <div class="quiz-box reveal">
+      <h3 id="question">Pergunta</h3>
+      <div id="answers"></div>
+      <p id="feedback"></p>
+      <button id="nextBtn" class="neon-btn">PRÓXIMA</button>
+      <div id="scoreBox"></div>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Projeto Cidadania Digital 2026</h3>
+    <p>#cidadaniadigital2026</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
-
 </html>
