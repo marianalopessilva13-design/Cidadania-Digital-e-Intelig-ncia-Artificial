@@ -1,37 +1,38 @@
-function openTab(id) {
-  let tabs = document.querySelectorAll(".tab");
-  tabs.forEach(t => t.classList.remove("active"));
+let score = 0;
 
-  document.getElementById(id).classList.add("active");
-}
-
-// QUIZ
-let pontos = 0;
-
-function quiz(btn, correto) {
+function responder(btn, correto) {
   if (correto) {
-    btn.style.background = "lime";
-    pontos++;
+    btn.style.background = "#22c55e";
+    score++;
   } else {
-    btn.style.background = "red";
+    btn.style.background = "#ef4444";
   }
 
   document.getElementById("resultado").innerText =
-    "Pontos: " + pontos;
+    "Pontuação: " + score;
 }
 
-// BARRAS
+function enviar() {
+  const input = document.getElementById("input").value.toLowerCase();
+  const res = document.getElementById("resposta");
+
+  if (input === "sim") {
+    res.innerText = "Você já foi exposto a desinformação online.";
+  } else {
+    res.innerText = "Boa prática: continue verificando fontes.";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".fill").forEach(el => {
-    el.style.width = el.getAttribute("data") + "%";
+  document.querySelectorAll(".fill").forEach(bar => {
+    bar.style.width = bar.getAttribute("data-value") + "%";
   });
 
-  // contador caótico
   let c = 0;
-  let counter = document.getElementById("contador");
+  const el = document.getElementById("contador");
 
   setInterval(() => {
     if (c < 100) c++;
-    counter.innerText = "ALERTA GLOBAL: " + c + "%";
-  }, 50);
+    el.innerText = `Consciência digital estimada: ${c}%`;
+  }, 30);
 });
