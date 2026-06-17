@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cidadania Digital Y2K</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <!-- GLITCH BACKGROUND -->
+  <div class="bg-glow"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1>⚡ CIDADANIA DIGITAL 2000s ⚡</h1>
+    <p>IA • Deepfakes • Desinformação • Consciência Digital</p>
+
+    <nav>
+      <a href="#deepfakes">Deepfakes</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#stats">Estatísticas</a>
+      <a href="#midia">Mídia</a>
+      <a href="#form">Interação</a>
+    </nav>
+
+    <button id="toggleTheme">🌙 Modo Noturno</button>
+  </header>
+
+  <!-- DEEPFAKES -->
+  <section id="deepfakes" class="section neon">
+    <h2>🧠 O que são Deepfakes?</h2>
+    <p>
+      Deepfakes são conteúdos gerados por inteligência artificial que imitam rostos, vozes e ações humanas de forma realista.
+    </p>
+
+    <h2>⚠️ Desinformação</h2>
+    <p>
+      A desinformação automatizada usa IA para espalhar notícias falsas em escala massiva.
+    </p>
+
+    <div class="fake-grid">
+      <div class="card glitch">📸 Imagem manipulada</div>
+      <div class="card glitch">🎥 Vídeo sintético</div>
+      <div class="card glitch">🗞️ Notícia falsa</div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="section">
+    <h2>🎯 QUIZ DIGITAL</h2>
+
+    <div class="quiz-box">
+      <p>1. Deepfakes são sempre facilmente identificáveis?</p>
+      <button onclick="answer(this, false)">Sim</button>
+      <button onclick="answer(this, true)">Não</button>
+    </div>
+
+    <div class="quiz-box">
+      <p>2. IA pode gerar notícias falsas automaticamente?</p>
+      <button onclick="answer(this, true)">Sim</button>
+      <button onclick="answer(this, false)">Não</button>
+    </div>
+
+    <div class="quiz-box">
+      <p>3. Verificar fonte ajuda a evitar fake news?</p>
+      <button onclick="answer(this, true)">Sim</button>
+      <button onclick="answer(this, false)">Não</button>
+    </div>
+
+    <p id="quizResult"></p>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats" class="section neon">
+    <h2>📊 Impacto da Desinformação</h2>
+
+    <div class="stat">
+      <p>Fake News compartilhadas</p>
+      <div class="bar"><div class="fill" data-value="90"></div></div>
+    </div>
+
+    <div class="stat">
+      <p>Usuários impactados</p>
+      <div class="bar"><div class="fill" data-value="75"></div></div>
+    </div>
+
+    <div class="stat">
+      <p>Conteúdo verificado</p>
+      <div class="bar"><div class="fill" data-value="60"></div></div>
+    </div>
+
+    <div class="counter" id="counter">0</div>
+  </section>
+
+  <!-- MÍDIA -->
+  <section id="midia" class="section">
+    <h2>🎥 Vídeo Educativo</h2>
+
+    <div class="video-box">
+      <iframe width="100%" height="315"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="YouTube video">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section id="form" class="section neon">
+    <h2>💬 Interação Digital</h2>
+
+    <p>Você já caiu em uma fake news?</p>
+
+    <input id="userInput" placeholder="Sim ou Não"/>
+    <button onclick="submitForm()">Enviar</button>
+
+    <p id="formResponse"></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Portal Y2K de Consciência Digital</p>
+    <p>#cidadaniadigital2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
