@@ -1,128 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cidadania Digital Y2K</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚠️ ALERTA DIGITAL Y2K</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- GLITCH BACKGROUND -->
-  <div class="bg-glow"></div>
 
-  <!-- HEADER -->
-  <header class="header">
-    <h1>⚡ CIDADANIA DIGITAL 2000s ⚡</h1>
-    <p>IA • Deepfakes • Desinformação • Consciência Digital</p>
+<header class="topo">
+  <h1>⚠️ PORTAL DE ALERTA DIGITAL ⚠️</h1>
+  <p>Deepfakes • IA • Manipulação • Internet Caótica</p>
 
-    <nav>
-      <a href="#deepfakes">Deepfakes</a>
-      <a href="#quiz">Quiz</a>
-      <a href="#stats">Estatísticas</a>
-      <a href="#midia">Mídia</a>
-      <a href="#form">Interação</a>
-    </nav>
+  <nav>
+    <button onclick="openTab('inicio')">INÍCIO</button>
+    <button onclick="openTab('deepfakes')">DEEPFAKES</button>
+    <button onclick="openTab('videos')">VÍDEOS</button>
+    <button onclick="openTab('quiz')">QUIZ</button>
+    <button onclick="openTab('dados')">DADOS</button>
+    <button onclick="openTab('alertas')">ALERTAS</button>
+  </nav>
+</header>
 
-    <button id="toggleTheme">🌙 Modo Noturno</button>
-  </header>
+<!-- INÍCIO -->
+<section id="inicio" class="tab active">
+  <div class="painel grande">
+    <h2>🌐 A INTERNET NÃO É MAIS SEGURA</h2>
+    <p>Conteúdos gerados por IA estão mudando tudo o que você vê online.</p>
 
-  <!-- DEEPFAKES -->
-  <section id="deepfakes" class="section neon">
-    <h2>🧠 O que são Deepfakes?</h2>
-    <p>
-      Deepfakes são conteúdos gerados por inteligência artificial que imitam rostos, vozes e ações humanas de forma realista.
-    </p>
+    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" />
+  </div>
 
-    <h2>⚠️ Desinformação</h2>
-    <p>
-      A desinformação automatizada usa IA para espalhar notícias falsas em escala massiva.
-    </p>
+  <div class="grid">
+    <div class="card">🧠 IA manipulando rostos</div>
+    <div class="card">📡 Fake news automatizada</div>
+    <div class="card">⚠️ Risco global digital</div>
+  </div>
+</section>
 
-    <div class="fake-grid">
-      <div class="card glitch">📸 Imagem manipulada</div>
-      <div class="card glitch">🎥 Vídeo sintético</div>
-      <div class="card glitch">🗞️ Notícia falsa</div>
-    </div>
-  </section>
+<!-- DEEPFAKES -->
+<section id="deepfakes" class="tab">
+  <h2>🧠 O QUE SÃO DEEPFAKES?</h2>
 
-  <!-- QUIZ -->
-  <section id="quiz" class="section">
-    <h2>🎯 QUIZ DIGITAL</h2>
+  <div class="painel">
+    <p>Deepfakes usam redes neurais para criar vídeos falsos extremamente realistas.</p>
+  </div>
 
-    <div class="quiz-box">
-      <p>1. Deepfakes são sempre facilmente identificáveis?</p>
-      <button onclick="answer(this, false)">Sim</button>
-      <button onclick="answer(this, true)">Não</button>
-    </div>
+  <div class="imgRow">
+    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+    <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769">
+    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485">
+  </div>
+</section>
 
-    <div class="quiz-box">
-      <p>2. IA pode gerar notícias falsas automaticamente?</p>
-      <button onclick="answer(this, true)">Sim</button>
-      <button onclick="answer(this, false)">Não</button>
-    </div>
+<!-- VÍDEOS -->
+<section id="videos" class="tab">
+  <h2>🎥 VÍDEOS EDUCATIVOS</h2>
 
-    <div class="quiz-box">
-      <p>3. Verificar fonte ajuda a evitar fake news?</p>
-      <button onclick="answer(this, true)">Sim</button>
-      <button onclick="answer(this, false)">Não</button>
-    </div>
+  <div class="videoGrid">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+    <iframe src="https://www.youtube.com/embed/aircAruvnKk"></iframe>
+    <iframe src="https://www.youtube.com/embed/2ePf9rue1Ao"></iframe>
+  </div>
+</section>
 
-    <p id="quizResult"></p>
-  </section>
+<!-- QUIZ -->
+<section id="quiz" class="tab">
+  <h2>🎯 QUIZ DE CONSCIÊNCIA DIGITAL</h2>
 
-  <!-- STATS -->
-  <section id="stats" class="section neon">
-    <h2>📊 Impacto da Desinformação</h2>
+  <div class="quizCard">
+    <p>Deepfake é sempre fácil de identificar?</p>
+    <button onclick="quiz(this,false)">SIM</button>
+    <button onclick="quiz(this,true)">NÃO</button>
+  </div>
 
-    <div class="stat">
-      <p>Fake News compartilhadas</p>
-      <div class="bar"><div class="fill" data-value="90"></div></div>
-    </div>
+  <div class="quizCard">
+    <p>IA pode criar notícias falsas?</p>
+    <button onclick="quiz(this,true)">SIM</button>
+    <button onclick="quiz(this,false)">NÃO</button>
+  </div>
 
-    <div class="stat">
-      <p>Usuários impactados</p>
-      <div class="bar"><div class="fill" data-value="75"></div></div>
-    </div>
+  <div id="resultado"></div>
+</section>
 
-    <div class="stat">
-      <p>Conteúdo verificado</p>
-      <div class="bar"><div class="fill" data-value="60"></div></div>
-    </div>
+<!-- DADOS -->
+<section id="dados" class="tab">
+  <h2>📊 IMPACTO GLOBAL</h2>
 
-    <div class="counter" id="counter">0</div>
-  </section>
+  <div class="barra">Desinformação <div class="fill" data="95"></div></div>
+  <div class="barra">Conteúdo falso <div class="fill" data="85"></div></div>
+  <div class="barra">Verificação humana <div class="fill" data="40"></div></div>
 
-  <!-- MÍDIA -->
-  <section id="midia" class="section">
-    <h2>🎥 Vídeo Educativo</h2>
+  <div id="contador"></div>
+</section>
 
-    <div class="video-box">
-      <iframe width="100%" height="315"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-        title="YouTube video">
-      </iframe>
-    </div>
-  </section>
+<!-- ALERTAS -->
+<section id="alertas" class="tab">
+  <h2>🚨 ALERTAS AO VIVO</h2>
 
-  <!-- FORM -->
-  <section id="form" class="section neon">
-    <h2>💬 Interação Digital</h2>
+  <ul>
+    <li>⚠️ IA gerando perfis falsos em redes sociais</li>
+    <li>⚠️ Vídeos políticos manipulados detectados</li>
+    <li>⚠️ Aumento de fake news em tempo real</li>
+  </ul>
+</section>
 
-    <p>Você já caiu em uma fake news?</p>
+<footer>
+  <p>#cidadaniadigital2026</p>
+</footer>
 
-    <input id="userInput" placeholder="Sim ou Não"/>
-    <button onclick="submitForm()">Enviar</button>
-
-    <p id="formResponse"></p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>Portal Y2K de Consciência Digital</p>
-    <p>#cidadaniadigital2026</p>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
