@@ -3,6 +3,7 @@ const revealElements = document.querySelectorAll(".reveal");
 function revealOnScroll() {
   revealElements.forEach((el) => {
     const top = el.getBoundingClientRect().top;
+
     if (top < window.innerHeight - 100) {
       el.classList.add("active");
     }
@@ -11,6 +12,25 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
+
+
+/* MENU MOBILE */
+
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+
+menuToggle.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll("#navMenu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+  });
+});
+
+
+/* CONTADORES */
 
 const counters = document.querySelectorAll(".counter");
 let countersStarted = false;
@@ -40,6 +60,9 @@ function startCounters() {
 }
 
 window.addEventListener("scroll", startCounters);
+
+
+/* PARTÍCULAS DE FUNDO */
 
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
@@ -84,6 +107,9 @@ function animateParticles() {
 }
 
 animateParticles();
+
+
+/* GRÁFICO CIRCULAR */
 
 const chartCanvas = document.getElementById("circleChart");
 const chartCtx = chartCanvas.getContext("2d");
@@ -141,6 +167,9 @@ window.addEventListener("scroll", () => {
   }
 });
 
+
+/* SCANNER DE FAKE NEWS */
+
 const scanBtn = document.getElementById("scanBtn");
 const fakeInput = document.getElementById("fakeInput");
 const scanProgress = document.getElementById("scanProgress");
@@ -173,67 +202,132 @@ scanBtn.addEventListener("click", () => {
     scanProgress.style.width = "100%";
     scannerText.textContent = "Análise concluída.";
 
-    const suspiciousWords = ["urgente", "compartilhe", "ninguém quer que você saiba", "verdade escondida", "chocante"];
+    const suspiciousWords = [
+      "urgente",
+      "compartilhe",
+      "ninguém quer que você saiba",
+      "verdade escondida",
+      "chocante",
+      "repasse",
+      "não mostre para ninguém",
+      "isso vai desaparecer"
+    ];
+
     const lowerText = text.toLowerCase();
-    const found = suspiciousWords.some(word => lowerText.includes(word));
+    const found = suspiciousWords.some((word) => lowerText.includes(word));
 
     if (found) {
-      scanResult.textContent = "⚠ Atenção: o texto possui linguagem típica de conteúdo suspeito. Verifique a fonte antes de compartilhar.";
+      scanResult.textContent =
+        "⚠ Atenção: o texto possui linguagem típica de conteúdo suspeito. Verifique fonte, data, contexto e autoria antes de compartilhar.";
     } else {
-      scanResult.textContent = "✅ Nenhum grande sinal foi encontrado, mas continue checando fonte, data, contexto e autoria.";
+      scanResult.textContent =
+        "✅ Nenhum grande sinal foi encontrado, mas continue checando fonte, data, contexto e autoria.";
     }
   }, 1900);
 });
 
+
+/* QUIZ INTERATIVO */
+
 const quizQuestions = [
   {
     question: "Qual é a melhor atitude ao receber um vídeo chocante no grupo da escola?",
-    answers: ["Compartilhar rápido", "Checar a fonte antes", "Acreditar se parecer real", "Mandar para todos"],
+    answers: [
+      "Compartilhar rápido",
+      "Checar a fonte antes",
+      "Acreditar se parecer real",
+      "Mandar para todos"
+    ],
     correct: 1
   },
   {
     question: "Deepfake pode manipular principalmente:",
-    answers: ["Rosto e voz", "Apenas textos", "Somente senhas", "Apenas emojis"],
+    answers: [
+      "Rosto e voz",
+      "Apenas textos",
+      "Somente senhas",
+      "Apenas emojis"
+    ],
     correct: 0
   },
   {
     question: "Um sinal comum de deepfake é:",
-    answers: ["Imagem perfeita sempre", "Movimento estranho da boca", "Legenda colorida", "Vídeo curto"],
+    answers: [
+      "Imagem perfeita sempre",
+      "Movimento estranho da boca",
+      "Legenda colorida",
+      "Vídeo curto"
+    ],
     correct: 1
   },
   {
     question: "Bots podem ser usados para:",
-    answers: ["Espalhar mensagens em massa", "Apagar a internet", "Criar senhas fortes", "Bloquear fake news automaticamente"],
+    answers: [
+      "Espalhar mensagens em massa",
+      "Apagar a internet",
+      "Criar senhas fortes",
+      "Bloquear fake news automaticamente"
+    ],
     correct: 0
   },
   {
     question: "Antes de acreditar em uma notícia, você deve:",
-    answers: ["Ver só o título", "Conferir data, fonte e contexto", "Confiar no print", "Acreditar se viralizou"],
+    answers: [
+      "Ver só o título",
+      "Conferir data, fonte e contexto",
+      "Confiar no print",
+      "Acreditar se viralizou"
+    ],
     correct: 1
   },
   {
     question: "IA é sempre perigosa?",
-    answers: ["Sim", "Não, depende do uso", "Só em vídeos", "Só em escolas"],
+    answers: [
+      "Sim",
+      "Não, depende do uso",
+      "Só em vídeos",
+      "Só em escolas"
+    ],
     correct: 1
   },
   {
     question: "Qual prática protege sua identidade online?",
-    answers: ["Postar documentos", "Usar senha igual em tudo", "Ativar verificação em duas etapas", "Clicar em links suspeitos"],
+    answers: [
+      "Postar documentos",
+      "Usar senha igual em tudo",
+      "Ativar verificação em duas etapas",
+      "Clicar em links suspeitos"
+    ],
     correct: 2
   },
   {
     question: "Fake news costuma usar:",
-    answers: ["Linguagem emocional e urgente", "Fontes claras", "Contexto completo", "Dados bem explicados"],
+    answers: [
+      "Linguagem emocional e urgente",
+      "Fontes claras",
+      "Contexto completo",
+      "Dados bem explicados"
+    ],
     correct: 0
   },
   {
     question: "Se uma imagem parece estranha, você pode:",
-    answers: ["Ignorar sinais", "Pesquisar em outras fontes", "Compartilhar primeiro", "Editar mais ainda"],
+    answers: [
+      "Ignorar sinais",
+      "Pesquisar em outras fontes",
+      "Compartilhar primeiro",
+      "Editar mais ainda"
+    ],
     correct: 1
   },
   {
     question: "Cidadania digital significa:",
-    answers: ["Usar internet com responsabilidade", "Ficar online o dia inteiro", "Acreditar em tudo", "Nunca usar tecnologia"],
+    answers: [
+      "Usar internet com responsabilidade",
+      "Ficar online o dia inteiro",
+      "Acreditar em tudo",
+      "Nunca usar tecnologia"
+    ],
     correct: 0
   }
 ];
@@ -254,6 +348,7 @@ function loadQuestion() {
   scoreBox.textContent = "";
 
   const q = quizQuestions[currentQuestion];
+
   questionEl.textContent = `${currentQuestion + 1}. ${q.question}`;
   answersEl.innerHTML = "";
 
@@ -262,7 +357,9 @@ function loadQuestion() {
     btn.className = "answer-btn";
     btn.textContent = answer;
 
-    btn.addEventListener("click", () => selectAnswer(btn, index));
+    btn.addEventListener("click", () => {
+      selectAnswer(btn, index);
+    });
 
     answersEl.appendChild(btn);
   });
@@ -279,16 +376,20 @@ function selectAnswer(button, index) {
   const allButtons = document.querySelectorAll(".answer-btn");
 
   allButtons.forEach((btn, i) => {
-    if (i === q.correct) btn.classList.add("correct");
+    if (i === q.correct) {
+      btn.classList.add("correct");
+    }
   });
 
   if (index === q.correct) {
     button.classList.add("correct");
-    feedbackEl.textContent = "✅ Resposta correta! Você está ficando blindado digitalmente.";
+    feedbackEl.textContent =
+      "✅ Resposta correta! Você está ficando blindado digitalmente.";
     score++;
   } else {
     button.classList.add("wrong");
-    feedbackEl.textContent = "⚠ Quase! Na internet, atenção é superpoder.";
+    feedbackEl.textContent =
+      "⚠ Quase! Na internet, atenção é superpoder.";
   }
 
   nextBtn.style.display = "inline-block";
@@ -334,12 +435,11 @@ function showFinalScore() {
     currentQuestion = 0;
     score = 0;
     nextBtn.textContent = "PRÓXIMA";
+
     nextBtn.onclick = null;
-    nextBtn.addEventListener("click", nextQuizStep);
+
     loadQuestion();
   };
 }
-
-function nextQuizStep() {}
 
 loadQuestion();
