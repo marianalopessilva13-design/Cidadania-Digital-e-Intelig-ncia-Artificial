@@ -1,598 +1,345 @@
-/* =================================================
-   MENU RESPONSIVO
-================================================= */
+const revealElements = document.querySelectorAll(".reveal");
 
-const hamburger = document.getElementById("hamburger");
-const menu = document.getElementById("menu");
+function revealOnScroll() {
+  revealElements.forEach((el) => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+}
 
-hamburger.addEventListener("click", () => {
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
 
-    menu.classList.toggle("active");
+const counters = document.querySelectorAll(".counter");
+let countersStarted = false;
 
-});
+function startCounters() {
+  const statsSection = document.querySelector("#dados");
+  const top = statsSection.getBoundingClientRect().top;
 
+  if (top < window.innerHeight - 100 && !countersStarted) {
+    countersStarted = true;
 
+    counters.forEach((counter) => {
+      const target = Number(counter.dataset.target);
+      let count = 0;
+      const speed = Math.max(10, Math.floor(1200 / target));
 
+      const interval = setInterval(() => {
+        count++;
+        counter.textContent = count;
 
-
-/* =================================================
-   ANIMAÇÃO SUAVE AO ROLAR
-================================================= */
-
-
-const reveals = document.querySelectorAll(".reveal");
-
-
-function revealOnScroll(){
-
-    reveals.forEach((element)=>{
-
-        let windowHeight = window.innerHeight;
-
-        let elementTop =
-        element.getBoundingClientRect().top;
-
-
-        if(elementTop < windowHeight - 100){
-
-            element.classList.add("active");
-
+        if (count >= target) {
+          clearInterval(interval);
         }
-
+      }, speed);
     });
-
+  }
 }
 
+window.addEventListener("scroll", startCounters);
 
-window.addEventListener(
-    "scroll",
-    revealOnScroll
-);
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
 
+let particles = [];
 
-revealOnScroll();
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
 
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
+for (let i = 0; i < 90; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 2 + 1,
+    speedX: Math.random() * 0.6 - 0.3,
+    speedY: Math.random() * 0.6 - 0.3
+  });
+}
 
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  particles.forEach((p) => {
+    ctx.fillStyle = "rgba(110, 238, 255, 0.8)";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
 
+    p.x += p.speedX;
+    p.y += p.speedY;
 
+    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+  });
 
-/* =================================================
-   CHECKLIST INTERATIVO
-================================================= */
+  requestAnimationFrame(animateParticles);
+}
 
+animateParticles();
 
-const checkItems =
-document.querySelectorAll(".check-item");
+const chartCanvas = document.getElementById("circleChart");
+const chartCtx = chartCanvas.getContext("2d");
 
+function drawCircleChart(percent) {
+  const centerX = chartCanvas.width / 2;
+  const centerY = chartCanvas.height / 2;
+  const radius = 85;
+  let current = 0;
 
-checkItems.forEach((item)=>{
+  function draw() {
+    chartCtx.clearRect(0, 0, chartCanvas.width, chartCanvas.height);
 
+    chartCtx.beginPath();
+    chartCtx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+    chartCtx.strokeStyle = "rgba(255,255,255,.15)";
+    chartCtx.lineWidth = 22;
+    chartCtx.stroke();
 
-    item.addEventListener("click",()=>{
+    chartCtx.beginPath();
+    chartCtx.arc(
+      centerX,
+      centerY,
+      radius,
+      -Math.PI / 2,
+      -Math.PI / 2 + Math.PI * 2 * (current / 100)
+    );
+    chartCtx.strokeStyle = "#ff4fd8";
+    chartCtx.lineWidth = 22;
+    chartCtx.lineCap = "round";
+    chartCtx.stroke();
 
+    chartCtx.fillStyle = "white";
+    chartCtx.font = "bold 36px Arial";
+    chartCtx.textAlign = "center";
+    chartCtx.fillText(current + "%", centerX, centerY + 12);
 
-        item.classList.toggle("active");
+    if (current < percent) {
+      current++;
+      requestAnimationFrame(draw);
+    }
+  }
 
+  draw();
+}
 
-    });
+let chartStarted = false;
 
+window.addEventListener("scroll", () => {
+  const chartTop = chartCanvas.getBoundingClientRect().top;
 
+  if (chartTop < window.innerHeight - 100 && !chartStarted) {
+    chartStarted = true;
+    drawCircleChart(76);
+  }
 });
 
-
-
-
-
-
-
-
-
-/* =================================================
-   QUIZ EDUCATIVO COM PONTUAÇÃO
-================================================= */
-
-
-const quiz = [
-
-{
-
-question:
-"Qual é a melhor atitude antes de compartilhar uma notícia?",
-
-
-answers:[
-
-"Compartilhar rapidamente",
-
-"Verificar a fonte e procurar confirmação",
-
-"Acreditar se tiver muitas curtidas",
-
-"Enviar para amigos perguntando"
-
-],
-
-
-correct:1
-
-},
-
-
-
-
-{
-
-question:
-"Qual sinal pode indicar um deepfake?",
-
-
-answers:[
-
-"Vídeo com legenda",
-
-"Imagem colorida",
-
-"Movimentos faciais estranhos ou voz artificial",
-
-"Vídeo curto"
-
-],
-
-
-correct:2
-
-},
-
-
-
-
-
-{
-
-question:
-"O que significa cidadania digital?",
-
-
-answers:[
-
-"Usar tecnologia com responsabilidade",
-
-"Ficar conectado o dia inteiro",
-
-"Postar muitas fotos",
-
-"Usar apenas redes sociais"
-
-],
-
-
-correct:0
-
-},
-
-
-
-
-
-{
-
-question:
-"Por que manchetes exageradas merecem cuidado?",
-
-
-answers:[
-
-"Porque sempre são verdadeiras",
-
-"Porque tentam gerar reação rápida sem análise",
-
-"Porque aparecem muito",
-
-"Porque usam letras grandes"
-
-],
-
-
-correct:1
-
-},
-
-
-
-
-{
-
-question:
-"Qual prática ajuda contra fake news?",
-
-
-answers:[
-
-"Compartilhar primeiro",
-
-"Ler apenas o título",
-
-"Pesquisar em fontes confiáveis",
-
-"Acreditar em mensagens encaminhadas"
-
-],
-
-
-correct:2
-
-}
-
+const scanBtn = document.getElementById("scanBtn");
+const fakeInput = document.getElementById("fakeInput");
+const scanProgress = document.getElementById("scanProgress");
+const scanResult = document.getElementById("scanResult");
+const scannerText = document.getElementById("scannerText");
+
+scanBtn.addEventListener("click", () => {
+  const text = fakeInput.value.trim();
+
+  if (text.length < 10) {
+    scanResult.textContent = "Digite uma mensagem maior para iniciar a análise educativa.";
+    return;
+  }
+
+  scanProgress.style.width = "0";
+  scanResult.textContent = "";
+  scannerText.textContent = "Analisando conteúdo...";
+
+  setTimeout(() => {
+    scanProgress.style.width = "35%";
+    scannerText.textContent = "Verificando padrões de IA...";
+  }, 400);
+
+  setTimeout(() => {
+    scanProgress.style.width = "70%";
+    scannerText.textContent = "Buscando sinais de manipulação emocional...";
+  }, 1100);
+
+  setTimeout(() => {
+    scanProgress.style.width = "100%";
+    scannerText.textContent = "Análise concluída.";
+
+    const suspiciousWords = ["urgente", "compartilhe", "ninguém quer que você saiba", "verdade escondida", "chocante"];
+    const lowerText = text.toLowerCase();
+    const found = suspiciousWords.some(word => lowerText.includes(word));
+
+    if (found) {
+      scanResult.textContent = "⚠ Atenção: o texto possui linguagem típica de conteúdo suspeito. Verifique a fonte antes de compartilhar.";
+    } else {
+      scanResult.textContent = "✅ Nenhum grande sinal foi encontrado, mas continue checando fonte, data, contexto e autoria.";
+    }
+  }, 1900);
+});
+
+const quizQuestions = [
+  {
+    question: "Qual é a melhor atitude ao receber um vídeo chocante no grupo da escola?",
+    answers: ["Compartilhar rápido", "Checar a fonte antes", "Acreditar se parecer real", "Mandar para todos"],
+    correct: 1
+  },
+  {
+    question: "Deepfake pode manipular principalmente:",
+    answers: ["Rosto e voz", "Apenas textos", "Somente senhas", "Apenas emojis"],
+    correct: 0
+  },
+  {
+    question: "Um sinal comum de deepfake é:",
+    answers: ["Imagem perfeita sempre", "Movimento estranho da boca", "Legenda colorida", "Vídeo curto"],
+    correct: 1
+  },
+  {
+    question: "Bots podem ser usados para:",
+    answers: ["Espalhar mensagens em massa", "Apagar a internet", "Criar senhas fortes", "Bloquear fake news automaticamente"],
+    correct: 0
+  },
+  {
+    question: "Antes de acreditar em uma notícia, você deve:",
+    answers: ["Ver só o título", "Conferir data, fonte e contexto", "Confiar no print", "Acreditar se viralizou"],
+    correct: 1
+  },
+  {
+    question: "IA é sempre perigosa?",
+    answers: ["Sim", "Não, depende do uso", "Só em vídeos", "Só em escolas"],
+    correct: 1
+  },
+  {
+    question: "Qual prática protege sua identidade online?",
+    answers: ["Postar documentos", "Usar senha igual em tudo", "Ativar verificação em duas etapas", "Clicar em links suspeitos"],
+    correct: 2
+  },
+  {
+    question: "Fake news costuma usar:",
+    answers: ["Linguagem emocional e urgente", "Fontes claras", "Contexto completo", "Dados bem explicados"],
+    correct: 0
+  },
+  {
+    question: "Se uma imagem parece estranha, você pode:",
+    answers: ["Ignorar sinais", "Pesquisar em outras fontes", "Compartilhar primeiro", "Editar mais ainda"],
+    correct: 1
+  },
+  {
+    question: "Cidadania digital significa:",
+    answers: ["Usar internet com responsabilidade", "Ficar online o dia inteiro", "Acreditar em tudo", "Nunca usar tecnologia"],
+    correct: 0
+  }
 ];
 
-
-
-
-
 let currentQuestion = 0;
-
 let score = 0;
-
 let answered = false;
 
-
-
-const questionElement =
-document.getElementById("question");
-
-
-const answersElement =
-document.getElementById("answers");
-
-
-const nextButton =
-document.getElementById("nextBtn");
-
-
-const scoreElement =
-document.getElementById("score");
-
-
-
-
-
-
-
-function loadQuestion(){
-
-
-    answered = false;
-
-
-    scoreElement.innerHTML = "";
-
-
-    let current =
-    quiz[currentQuestion];
-
-
-    questionElement.innerHTML =
-    current.question;
-
-
-    answersElement.innerHTML = "";
-
-
-
-    current.answers.forEach(
-        (answer,index)=>{
-
-
-        const button =
-        document.createElement("button");
-
-
-        button.className =
-        "option";
-
-
-        button.innerHTML =
-        answer;
-
-
-
-        button.addEventListener(
-            "click",
-            ()=>{
-
-
-            if(answered){
-
-                return;
-
-            }
-
-
-            answered = true;
-
-
-
-            if(index === current.correct){
-
-
-                button.classList.add(
-                    "correct"
-                );
-
-
-                score++;
-
-
-            }else{
-
-
-                button.classList.add(
-                    "wrong"
-                );
-
-
-                answersElement
-                .children[current.correct]
-                .classList.add(
-                    "correct"
-                );
-
-            }
-
-
-        });
-
-
-
-        answersElement.appendChild(
-            button
-        );
-
-
-    });
-
-
+const questionEl = document.getElementById("question");
+const answersEl = document.getElementById("answers");
+const feedbackEl = document.getElementById("feedback");
+const nextBtn = document.getElementById("nextBtn");
+const scoreBox = document.getElementById("scoreBox");
+
+function loadQuestion() {
+  answered = false;
+  feedbackEl.textContent = "";
+  scoreBox.textContent = "";
+
+  const q = quizQuestions[currentQuestion];
+  questionEl.textContent = `${currentQuestion + 1}. ${q.question}`;
+  answersEl.innerHTML = "";
+
+  q.answers.forEach((answer, index) => {
+    const btn = document.createElement("button");
+    btn.className = "answer-btn";
+    btn.textContent = answer;
+
+    btn.addEventListener("click", () => selectAnswer(btn, index));
+
+    answersEl.appendChild(btn);
+  });
+
+  nextBtn.style.display = "none";
 }
 
+function selectAnswer(button, index) {
+  if (answered) return;
 
+  answered = true;
 
+  const q = quizQuestions[currentQuestion];
+  const allButtons = document.querySelectorAll(".answer-btn");
 
+  allButtons.forEach((btn, i) => {
+    if (i === q.correct) btn.classList.add("correct");
+  });
 
+  if (index === q.correct) {
+    button.classList.add("correct");
+    feedbackEl.textContent = "✅ Resposta correta! Você está ficando blindado digitalmente.";
+    score++;
+  } else {
+    button.classList.add("wrong");
+    feedbackEl.textContent = "⚠ Quase! Na internet, atenção é superpoder.";
+  }
 
-nextButton.addEventListener(
-"click",
-()=>{
+  nextBtn.style.display = "inline-block";
+}
 
+nextBtn.addEventListener("click", () => {
+  currentQuestion++;
 
-    currentQuestion++;
-
-
-    if(currentQuestion < quiz.length){
-
-
-        loadQuestion();
-
-
-    }else{
-
-
-        questionElement.innerHTML =
-        "Resultado final";
-
-
-        answersElement.innerHTML =
-        "";
-
-
-        nextButton.style.display =
-        "none";
-
-
-        scoreElement.innerHTML =
-        `
-        Você acertou 
-        ${score}
-        de
-        ${quiz.length}
-        perguntas!
-
-        <br><br>
-
-        Continue praticando:
-        antes de compartilhar,
-        verifique.
-        `;
-
-
-    }
-
-
+  if (currentQuestion < quizQuestions.length) {
+    loadQuestion();
+  } else {
+    showFinalScore();
+  }
 });
 
+function showFinalScore() {
+  questionEl.textContent = "Resultado final";
+  answersEl.innerHTML = "";
+  feedbackEl.textContent = "";
 
+  const percent = Math.round((score / quizQuestions.length) * 100);
+
+  let message = "";
+
+  if (percent >= 80) {
+    message = "Especialista Digital 🧠⚡";
+  } else if (percent >= 50) {
+    message = "Explorador Digital em evolução 🚀";
+  } else {
+    message = "Precisa reforçar sua segurança online 🔐";
+  }
+
+  scoreBox.innerHTML = `
+    Você acertou ${score} de ${quizQuestions.length} perguntas.<br>
+    Aproveitamento: ${percent}%<br>
+    Classificação: ${message}
+  `;
+
+  nextBtn.textContent = "REINICIAR QUIZ";
+  nextBtn.style.display = "inline-block";
+
+  nextBtn.onclick = () => {
+    currentQuestion = 0;
+    score = 0;
+    nextBtn.textContent = "PRÓXIMA";
+    nextBtn.onclick = null;
+    nextBtn.addEventListener("click", nextQuizStep);
+    loadQuestion();
+  };
+}
+
+function nextQuizStep() {}
 
 loadQuestion();
-
-
-
-
-
-
-
-
-
-/* =================================================
-   MITOS E VERDADES INTERATIVO
-================================================= */
-
-
-const myths =
-document.querySelectorAll(".myth");
-
-
-myths.forEach((item)=>{
-
-
-    item.addEventListener(
-    "click",
-    ()=>{
-
-
-        item.classList.toggle(
-        "open"
-        );
-
-
-    });
-
-
-});
-
-
-
-
-
-
-
-
-
-/* =================================================
-   BOTÃO VOLTAR AO TOPO
-================================================= */
-
-
-const topButton =
-document.getElementById("topBtn");
-
-
-
-window.addEventListener(
-"scroll",
-()=>{
-
-
-    if(window.scrollY > 500){
-
-
-        topButton.style.display =
-        "block";
-
-
-    }else{
-
-
-        topButton.style.display =
-        "none";
-
-
-    }
-
-
-});
-
-
-
-
-topButton.addEventListener(
-"click",
-()=>{
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-
-});
-
-
-
-
-
-
-
-
-
-
-/* =================================================
-   PIXELS / PARTÍCULAS FUTURISTAS
-================================================= */
-
-
-setInterval(()=>{
-
-
-    const pixel =
-    document.createElement("div");
-
-
-    pixel.style.position =
-    "fixed";
-
-
-    pixel.style.width =
-    "6px";
-
-
-    pixel.style.height =
-    "6px";
-
-
-    pixel.style.left =
-    Math.random() *
-    window.innerWidth + "px";
-
-
-    pixel.style.top =
-    Math.random() *
-    window.innerHeight + "px";
-
-
-    pixel.style.background =
-    "cyan";
-
-
-    pixel.style.borderRadius =
-    "50%";
-
-
-    pixel.style.boxShadow =
-    "0 0 15px cyan";
-
-
-    pixel.style.pointerEvents =
-    "none";
-
-
-    pixel.style.zIndex =
-    "-1";
-
-
-    pixel.style.animation =
-    "float 3s ease forwards";
-
-
-
-    document.body.appendChild(
-        pixel
-    );
-
-
-
-    setTimeout(()=>{
-
-
-        pixel.remove();
-
-
-    },3000);
-
-
-
-},700);
