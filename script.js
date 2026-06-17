@@ -1,52 +1,37 @@
-let score = 0;
+function openTab(id) {
+  let tabs = document.querySelectorAll(".tab");
+  tabs.forEach(t => t.classList.remove("active"));
 
-function answer(btn, correct) {
-  if (correct) {
+  document.getElementById(id).classList.add("active");
+}
+
+// QUIZ
+let pontos = 0;
+
+function quiz(btn, correto) {
+  if (correto) {
     btn.style.background = "lime";
-    score++;
+    pontos++;
   } else {
     btn.style.background = "red";
   }
 
-  document.getElementById("quizResult").innerText =
-    "Pontuação: " + score;
+  document.getElementById("resultado").innerText =
+    "Pontos: " + pontos;
 }
 
-// FORM
-function submitForm() {
-  const input = document.getElementById("userInput").value.toLowerCase();
-  const res = document.getElementById("formResponse");
-
-  if (input === "sim") {
-    res.innerText = "⚠️ Você já esteve exposto a desinformação!";
-  } else {
-    res.innerText = "✅ Continue verificando fontes confiáveis!";
-  }
-}
-
-// COUNTER ANIMATION
-let counter = document.getElementById("counter");
-let count = 0;
-
-window.addEventListener("scroll", () => {
-  if (count === 0) {
-    let interval = setInterval(() => {
-      count++;
-      counter.innerText = count + "% consciência digital";
-      if (count >= 100) clearInterval(interval);
-    }, 20);
-  }
-});
-
-// BARS
+// BARRAS
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".fill").forEach(bar => {
-    let value = bar.getAttribute("data-value");
-    bar.style.width = value + "%";
+  document.querySelectorAll(".fill").forEach(el => {
+    el.style.width = el.getAttribute("data") + "%";
   });
-});
 
-// DARK MODE
-document.getElementById("toggleTheme").addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+  // contador caótico
+  let c = 0;
+  let counter = document.getElementById("contador");
+
+  setInterval(() => {
+    if (c < 100) c++;
+    counter.innerText = "ALERTA GLOBAL: " + c + "%";
+  }, 50);
 });
