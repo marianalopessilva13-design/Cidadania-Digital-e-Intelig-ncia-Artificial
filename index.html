@@ -1,112 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>⚠️ ALERTA DIGITAL Y2K</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cidadania Digital e IA</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
-<header class="topo">
-  <h1>⚠️ PORTAL DE ALERTA DIGITAL ⚠️</h1>
-  <p>Deepfakes • IA • Manipulação • Internet Caótica</p>
+<header class="header">
+  <div class="container">
+    <h1>Cidadania Digital e Inteligência Artificial</h1>
+    <p>Compreendendo deepfakes, desinformação e o impacto da IA na sociedade</p>
 
-  <nav>
-    <button onclick="openTab('inicio')">INÍCIO</button>
-    <button onclick="openTab('deepfakes')">DEEPFAKES</button>
-    <button onclick="openTab('videos')">VÍDEOS</button>
-    <button onclick="openTab('quiz')">QUIZ</button>
-    <button onclick="openTab('dados')">DADOS</button>
-    <button onclick="openTab('alertas')">ALERTAS</button>
-  </nav>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#deepfakes">Deepfakes</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#dados">Dados</a>
+      <a href="#contato">Interação</a>
+    </nav>
+  </div>
 </header>
 
-<!-- INÍCIO -->
-<section id="inicio" class="tab active">
-  <div class="painel grande">
-    <h2>🌐 A INTERNET NÃO É MAIS SEGURA</h2>
-    <p>Conteúdos gerados por IA estão mudando tudo o que você vê online.</p>
+<main class="container">
 
-    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" />
-  </div>
+  <!-- SOBRE -->
+  <section id="sobre" class="card">
+    <h2>O que é cidadania digital?</h2>
+    <p>
+      Cidadania digital envolve o uso consciente, ético e crítico da tecnologia,
+      especialmente em ambientes onde a informação pode ser manipulada por inteligência artificial.
+    </p>
+  </section>
 
-  <div class="grid">
-    <div class="card">🧠 IA manipulando rostos</div>
-    <div class="card">📡 Fake news automatizada</div>
-    <div class="card">⚠️ Risco global digital</div>
-  </div>
-</section>
+  <!-- DEEPFAKES -->
+  <section id="deepfakes" class="card">
+    <h2>Deepfakes e desinformação</h2>
 
-<!-- DEEPFAKES -->
-<section id="deepfakes" class="tab">
-  <h2>🧠 O QUE SÃO DEEPFAKES?</h2>
+    <div class="grid">
+      <div>
+        <p>
+          Deepfakes são conteúdos gerados por IA que simulam rostos, vozes e ações reais.
+        </p>
+        <p>
+          Eles podem ser usados tanto para entretenimento quanto para manipulação e fraude.
+        </p>
+      </div>
 
-  <div class="painel">
-    <p>Deepfakes usam redes neurais para criar vídeos falsos extremamente realistas.</p>
-  </div>
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="IA"/>
+    </div>
+  </section>
 
-  <div class="imgRow">
-    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
-    <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769">
-    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485">
-  </div>
-</section>
+  <!-- QUIZ -->
+  <section id="quiz" class="card">
+    <h2>Quiz de conscientização</h2>
 
-<!-- VÍDEOS -->
-<section id="videos" class="tab">
-  <h2>🎥 VÍDEOS EDUCATIVOS</h2>
+    <div class="quiz">
+      <p>Deepfakes sempre são fáceis de identificar?</p>
+      <button onclick="responder(this,false)">Sim</button>
+      <button onclick="responder(this,true)">Não</button>
+    </div>
 
-  <div class="videoGrid">
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-    <iframe src="https://www.youtube.com/embed/aircAruvnKk"></iframe>
-    <iframe src="https://www.youtube.com/embed/2ePf9rue1Ao"></iframe>
-  </div>
-</section>
+    <div class="quiz">
+      <p>A IA pode gerar notícias falsas automaticamente?</p>
+      <button onclick="responder(this,true)">Sim</button>
+      <button onclick="responder(this,false)">Não</button>
+    </div>
 
-<!-- QUIZ -->
-<section id="quiz" class="tab">
-  <h2>🎯 QUIZ DE CONSCIÊNCIA DIGITAL</h2>
+    <p id="resultado"></p>
+  </section>
 
-  <div class="quizCard">
-    <p>Deepfake é sempre fácil de identificar?</p>
-    <button onclick="quiz(this,false)">SIM</button>
-    <button onclick="quiz(this,true)">NÃO</button>
-  </div>
+  <!-- DADOS -->
+  <section id="dados" class="card">
+    <h2>Impacto da desinformação</h2>
 
-  <div class="quizCard">
-    <p>IA pode criar notícias falsas?</p>
-    <button onclick="quiz(this,true)">SIM</button>
-    <button onclick="quiz(this,false)">NÃO</button>
-  </div>
+    <div class="barra">
+      <span>Fake news online</span>
+      <div class="progress"><div class="fill" data-value="90"></div></div>
+    </div>
 
-  <div id="resultado"></div>
-</section>
+    <div class="barra">
+      <span>Conteúdo manipulado</span>
+      <div class="progress"><div class="fill" data-value="75"></div></div>
+    </div>
 
-<!-- DADOS -->
-<section id="dados" class="tab">
-  <h2>📊 IMPACTO GLOBAL</h2>
+    <div class="barra">
+      <span>Verificação humana</span>
+      <div class="progress"><div class="fill" data-value="55"></div></div>
+    </div>
 
-  <div class="barra">Desinformação <div class="fill" data="95"></div></div>
-  <div class="barra">Conteúdo falso <div class="fill" data="85"></div></div>
-  <div class="barra">Verificação humana <div class="fill" data="40"></div></div>
+    <div class="contador" id="contador"></div>
+  </section>
 
-  <div id="contador"></div>
-</section>
+  <!-- INTERAÇÃO -->
+  <section id="contato" class="card">
+    <h2>Interação</h2>
 
-<!-- ALERTAS -->
-<section id="alertas" class="tab">
-  <h2>🚨 ALERTAS AO VIVO</h2>
+    <p>Você já acreditou em uma notícia falsa?</p>
 
-  <ul>
-    <li>⚠️ IA gerando perfis falsos em redes sociais</li>
-    <li>⚠️ Vídeos políticos manipulados detectados</li>
-    <li>⚠️ Aumento de fake news em tempo real</li>
-  </ul>
-</section>
+    <input id="input" placeholder="Digite sim ou não"/>
+    <button onclick="enviar()">Enviar</button>
 
-<footer>
+    <p id="resposta"></p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Projeto educativo sobre cidadania digital e IA</p>
   <p>#cidadaniadigital2026</p>
 </footer>
 
